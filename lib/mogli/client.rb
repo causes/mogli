@@ -214,8 +214,8 @@ module Mogli
     end
 
     def determine_class(klass_or_klasses,data)
-      if data.responds_to?(:has_key?) && data.has_key('type') &&
-                                         klass_or_klasses == Mogli::Model
+      if data.respond_to?(:has_key?) && data.has_key('type') &&
+                                        klass_or_klasses == Mogli::Model
         return constantize_string(data['type'])
       end
       klasses = Array(klass_or_klasses).map { |k| constantize_string(k)}
